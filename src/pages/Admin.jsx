@@ -7,7 +7,8 @@ export default function Admin() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:3001/api/inquiries')
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+    fetch(`${apiUrl}/api/inquiries`)
       .then(res => res.json())
       .then(data => {
         setInquiries(data);
